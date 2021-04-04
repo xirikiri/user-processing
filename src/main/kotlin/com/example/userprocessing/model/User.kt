@@ -15,13 +15,12 @@ class User(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="id")
         var id: Long? = null,
-
         @Column(name="firstname")
-        var firstName: String,
+        var firstName: String = "",
         @Column(name="lastname")
-        var lastName: String,
+        var lastName: String = "",
         @Column(name = "email")
-        var mail: String,
+        var mail: String = "",
         @Column(name = "registrationDate")
-        var registrationDate: Date?
+        var registrationDate: Date? = null
 )
