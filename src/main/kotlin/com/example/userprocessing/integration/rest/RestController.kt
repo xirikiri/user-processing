@@ -10,24 +10,25 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
+import kotlin.NoSuchElementException
 
 @RestController
 @RequestMapping("/user")
 class RestController(
-        @Autowired private val userDataService: UserDataService
+    @Autowired private val userDataService: UserDataService
 ) {
     @GetMapping("/get/{id}")
-    fun getUserById(@PathVariable id: String): String {
-        return "success";
+    fun getUserById(@PathVariable id: String): User? {
+        return userDataService.findUserById(id)
     }
 
     @PostMapping("/put")
-    fun addUser(@RequestBody user: User?): User {
-        return User(
-                0,
-                "firstName",
-                "lastName",
-                "email",
-                Date(111))
+    fun addUser(@RequestBody user: User): User {
+        return userDataService.addUser(user)
+    }
+
+    @GetMapping("/delete/{id}")
+    fun deleteUser(@PathVariable id: String): Unit {
+        userDataService.deleteUserById(id)
     }
 }
