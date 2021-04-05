@@ -29,7 +29,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/UserProcessingDB
     driver-class-name: org.postgresql.Driver
     username: UserProcessingUser
-    password: F2bre9corecore65
+    password: password
   jpa:
     properties:
       hibernate:
